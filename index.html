@@ -4,7 +4,13 @@
 	<head>
 		<title>Firebase Web Quickstart</title>
 		<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
-		<script src="app.js"></script>
+		
+	</head>
+	<body>
+		<!-- Value -->
+		<pre id = "object"></pre>
+    
+		<!-- Child -->
 		<script>
 			 var config = {
 			apiKey: "AIzaSyClwsYJMweZRPRq6uqIO5-Me0Q3Fr-Fxjg",
@@ -15,13 +21,24 @@
 			messagingSenderId: "1087442343696"
 			};
 			firebase.initializeApp(config);
-		</script>
-	</head>
-	<body>
-		<!-- Value -->
-		<pre id = "object"></pre>
+			
+			function sad() {
+
+			// Initialize Firebase
+
     
-		<!-- Child -->
+			  //Get elemetns
+			  const preObject = document.getElementById('object');
+
+			  //Create references
+			  cosnt dbRefObject = firebase.database().ref().child('object');
+
+			  //Sync object changes
+			  dbRef.Object.on('value', snap => {
+				  preObject.innerText= JSON.stringify(snap.val(),null,3);
+
+			}());
+		</script>
 	</body>
 	
 </html>
