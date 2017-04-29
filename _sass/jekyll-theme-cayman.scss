@@ -350,6 +350,24 @@ a {
 	line-height: 1.4em;
 	color: #ECAC00; 
 }
+#gradeEarnedDiv{
+	display: inline-block;
+	color: white; 
+}
+#creditEarnedDiv{
+	display: inline-block;
+	color: white; 
+}
+#gpaButtonsDiv{
+	display: inline-block;
+	color:white;
+}
+#calculatorDiv{
+    width: 180px;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 0;
+background-color: #555;
 #academicExpand{
 	display:none;
 }
