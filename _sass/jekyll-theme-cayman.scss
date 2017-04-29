@@ -343,3 +343,16 @@ a {
 .site-footer-credits {
   color: $blockquote-text-color;
 }
+#gpaExpand{
+	display: inline-block;
+	display:none;
+	font-size: 1.5em;
+	line-height: 1.4em;
+	color: #ECAC00; 
+}
+#academicExpand{
+	display:none;
+}
+#announcementsExpand{
+	display:none;
+}
