@@ -1,44 +1,19 @@
+---
+layout: default
+title: Murray User Manual (MUM)
+---
+<div class="blurb">
+	<h1>Welcome to Murray User Manual</h1>
+</div><!-- /.blurb -->
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Firebase Web Quickstart</title>
-		<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
-		
-	</head>
-	<body>
-		<!-- Value -->
-		<pre id = "object"></pre>
-    
-		<!-- Child -->
-		<script>
-			 var config = {
-			apiKey: "AIzaSyClwsYJMweZRPRq6uqIO5-Me0Q3Fr-Fxjg",
-			authDomain: "database-29555.firebaseapp.com",
-			databaseURL: "https://database-29555.firebaseio.com",
-			projectId: "database-29555",
-			storageBucket: "database-29555.appspot.com",
-			messagingSenderId: "1087442343696"
-			};
-			firebase.initializeApp(config);
-			
-			function sad() {
-
-			// Initialize Firebase
-
-    
-			  //Get elemetns
-			  const preObject = document.getElementById('object');
-
-			  //Create references
-			  cosnt dbRefObject = firebase.database().ref().child('object');
-
-			  //Sync object changes
-			  dbRef.Object.on('value', snap => {
-				  preObject.innerText= JSON.stringify(snap.val(),null,3);
-
-			}());
-		</script>
-	</body>
+<ul class="posts">
 	
-</html>
+	{% for post in site.posts offset: 0 limit: 10 %}
+	    <h2>
+		<a href="{{ site.prefix }}{{ post.url }}">{{ post.title }}</a>
+	    </h2>
+	    {{ post.date | date_to_string }}
+	    {{ post.content }}
+	    <hr />
+	{% endfor %}
+</ul>
