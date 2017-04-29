@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Murray User Manual
 ---
 # [](#header-1)Hello and welcome to Murray User Manual
 
