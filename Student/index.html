@@ -1,0 +1,132 @@
+---
+layout: default
+title: Page for students
+---
+<!-- Source of jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- slide listener -->
+<script> 
+$(document).ready(function(){
+    $("#gpaTitle").click(function(){
+        $("#gpaExpand").slideDown("slow");  
+    });
+});
+</script>
+<!-- slide listener -->
+<script> 
+$(document).ready(function(){
+    $("#academicTitle").click(function(){
+        $("#academicExpand").slideDown("slow");
+    });
+});
+</script>
+<!-- slide listener -->
+<script> 
+$(document).ready(function(){
+    $("#announcementsTitle").click(function(){
+        $("#announcementsExpand").slideDown("slow");
+    });
+});
+</script>
+<!-- variable declarations -->
+<script>
+var grade = 0;
+var credits = 0;
+var totalCredits = 0;
+var creditWorth = 0;
+var classesSum = 0;
+var result = 0;
+//gets input when called, and assigns to variables
+function setVariables(){
+	var gradeArray = document.getElementsByName('gradeVal');
+    	var gradeArrayL = gradeArray.length;
+    	for (i=0; i < gradeArrayL; i++) {
+            if (gradeArray[i].checked==true) {   
+           	grade = gradeArray[i].value;
+		break;
+	    }
+    	}
+	var creditArray = document.getElementsByName('creditVal');
+    	var creditArrayL = creditArray.length;
+    	for (i=0; i < creditArrayL; i++) {
+            if (creditArray[i].checked==true) {   
+           	credits = creditArray[i].value;
+		break;
+	    }
+    	}
+	totalCredits += parseFloat(credits);
+	creditWorth += grade * credits;
+	classesSum = classesSum +1;
+}	
+//calculates gpa with present variables
+function calculateGPA(){
+	if(totalCredits!=0){
+		result = creditWorth/totalCredits;
+	}
+	document.getElementById("gpaCalculator").value = result;
+}
+//resets variable values
+function reset(){
+	grade = 0;
+	credits = 0;
+	totalCredits = 0;
+	creditWorth = 0;
+	classesSum = 0;
+	result = 0;
+	document.getElementById("gpaCalculator").value = "0";
+}
+</script>
+<div>
+	<h1>The Student Tab</h1>
+	<p> This is the tab which aims to aid the student in basic functions like calculating GPA, seeing the tentative 
+	academic calendar, and also a portion to announce any significant messages from the university 
+	(such as school cancelations).</p>
+<div  id="gpaTitle">
+	<h2 style="cursor:pointer">GPA Calculator</h2>
+</div>	
+<div id="gpaExpand">
+	For each class, enter the following information, then press "Add."<br>		
+	<div id="calculatorDiv">
+		<div id="resultDiv">
+			<input type="text" name="result" id="gpaCalculator" value="Result" style="width: 170px;">
+		</div>
+		<div id ="gradeEarnedDiv">
+			<form action="" id="gradeVal">	
+			  <input type="radio" name="gradeVal" value="4" > A<br>
+			  <input type="radio" name="gradeVal" value="3" > B<br>
+			  <input type="radio" name="gradeVal" value="2" > C<br>
+			  <input type="radio" name="gradeVal" value="1" > D<br>
+			  <input type="radio" name="gradeVal" value="0" > E
+			</form>	
+		</div>
+		<div id="creditEarnedDiv">
+			<form action="" id="creditVal">		
+			  <input type="radio" name="creditVal" value="5" > 5<br>
+			  <input type="radio" name="creditVal" value="4" > 4<br>
+			  <input type="radio" name="creditVal" value="3"> 3<br>
+			  <input type="radio" name="creditVal" value="2" > 2<br>
+			  <input type="radio" name="creditVal" value="1" > 1
+			</form>		
+		</div>
+		<div id="gpaButtonsDiv">
+		<button onclick="setVariables()" style="width: 80px; height: 60;">Add</button><br>
+		<button onclick="calculateGPA()" style="width: 80px; height: 60;">Calculate</button><br>
+		<button onclick="reset()" style="width: 80px; height: 60;">Reset</button><br><br>
+		</div>
+	</div>
+</div>
+<div  id="academicTitle">
+	<h2 style="cursor:pointer">Academic Calendar</h2>
+</div>
+<div  id="academicExpand">
+	<p> Follow this link to reach the MSU calendar:  
+	<a href="http://murraystate.edu/academics/RegistrarsOffice/CalendarsAndScheduling/Fall%20Winter%202016%20Academic%20Calendar_V3.pdf" 
+	target="_blank">Academic Calendar</a> </p>
+</div>
+<div  id="announcementsTitle">
+	<h2 style="cursor:pointer">Special University Announcements</h2>
+</div>
+<div  id="announcementsExpand">
+	<p> This is the announcements spot </p>
+</div>
+</div><!-- /.stud -->
